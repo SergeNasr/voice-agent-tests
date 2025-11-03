@@ -4,11 +4,11 @@ install:
 
 # Run the FastAPI server
 dev:
-    uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8001
 
 # Run the FastAPI server (production mode)
 run:
-    uv run uvicorn app.main:app --host 0.0.0.0 --port 8000
+    uv run uvicorn app.main:app --host 0.0.0.0 --port 8001
 
 # Format code
 fmt:
