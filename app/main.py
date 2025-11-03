@@ -1,9 +1,7 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-import asyncio
 from app.asr.factory import create_provider
-from app.config import config
 
 app = FastAPI(title="ASR Provider Testing MVP")
 
