@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.status {
+    text-align: center;
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    background: #f0f0f0;
+    color: #666;
+}
+
+.status.connected {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status.recording {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #5568d3;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #5a6268;
+}
+
+.transcription-container {
+    margin-top: 2rem;
+}
+
+.transcription-container h2 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.transcription {
+    min-height: 200px;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    background: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.transcription:empty::before {
+    content: "Transcription will appear here...";
+    color: #999;
+    font-style: italic;
+}
+
