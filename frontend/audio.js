@@ -1,5 +1,5 @@
 const SAMPLE_RATE = 16000;
-const CHUNK_SIZE = 4000;
+const CHUNK_SIZE = 4096;
 
 let audioContext = null;
 let sourceNode = null;
