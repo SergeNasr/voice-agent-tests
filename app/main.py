@@ -38,12 +38,14 @@ async def websocket_endpoint(websocket: WebSocket):
 
         # Handle audio stream
         while True:
-            # Receive audio chunk from client
-            data = await websocket.receive()
+            try:
+                # Receive audio chunk from client
+                data = await websocket.receive()
+            except RuntimeError:
+                break
 
             if "bytes" in data:
-                # Binary audio data (WebM/Opus from browser)
-                # Note: Some providers may require PCM16 format conversion
+                # Binary audio data (PCM16 from browser)
                 audio_chunk = data["bytes"]
 
                 # Get transcription from provider
@@ -51,9 +53,12 @@ async def websocket_endpoint(websocket: WebSocket):
 
                 # Send transcription back if available
                 if transcription:
-                    await websocket.send_json(
-                        {"type": "transcription", "text": transcription}
-                    )
+                    try:
+                        await websocket.send_json(
+                            {"type": "transcription", "text": transcription}
+                        )
+                    except Exception:
+                        break
 
             elif "text" in data:
                 # Text message (for control commands)
@@ -65,7 +70,10 @@ async def websocket_endpoint(websocket: WebSocket):
         print("Client disconnected")
     except Exception as e:
         print(f"WebSocket error: {e}")
-        await websocket.send_json({"type": "error", "message": str(e)})
+        try:
+            await websocket.send_json({"type": "error", "message": str(e)})
+        except Exception:
+            pass
     finally:
         # Cleanup provider
         await provider.cleanup()
