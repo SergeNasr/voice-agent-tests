@@ -47,7 +47,7 @@ class OpenAIRealtimeProvider(ASRProvider):
         # Build WebSocket URL with model
         ws_url = f"wss://api.openai.com/v1/realtime?model={self.model}"
 
-        self.websocket = await websockets.connect(ws_url, extra_headers=headers)
+        self.websocket = await websockets.connect(ws_url, additional_headers=headers)
 
         # Start listener task for incoming messages
         self._listener_task = asyncio.create_task(self._listen_for_messages())
