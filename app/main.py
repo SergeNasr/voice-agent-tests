@@ -8,13 +8,13 @@ from app.config import config
 app = FastAPI(title="ASR Provider Testing MVP")
 
 # Mount static files
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 
 @app.get("/")
 async def read_root():
     """Serve the main HTML page."""
-    return FileResponse("app/static/index.html")
+    return FileResponse("frontend/index.html")
 
 
 @app.websocket("/ws")
